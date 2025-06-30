@@ -5,6 +5,7 @@
 .navbar {
   display: flex;
   justify-content: end;
+  background-color: aqua;
 }
 
 .home-btn {

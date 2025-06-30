@@ -1,0 +1,12 @@
+
+
+.featured-container {
+    display: flex;
+    gap: 1px;
+}
+
+.dummy-img {
+    height: 150px;
+    width: 150px;
+    background-color: blueviolet;
+}

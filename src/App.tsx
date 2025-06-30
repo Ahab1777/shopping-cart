@@ -4,8 +4,8 @@ import { Link, Outlet } from 'react-router-dom'
 
 
 function App() {
-  console.log('app ocmponent rendered')
   return (
+    <>
     <div className="main">
       <div className="navbar">
             <Link to="/" className="home-btn">Home</Link>
@@ -16,6 +16,14 @@ function App() {
         <Outlet/>
       </div>
     </div>
+    <footer>
+      <p>by: Leonardo de Pinho - © 2025 The Odin Project. Fake shop website for educational purposes.  
+        <a 
+          href='https://github.com/Ahab1777/shopping-cart'
+          >GitHub</a>
+      </p>
+    </footer>
+    </>
   )
 }
 
