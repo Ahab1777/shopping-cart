@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import ProductCard from '../components/ProductCard'
-import { useState } from 'react'
+import { useState, type ChangeEvent, type KeyboardEvent } from 'react'
 import type { Product } from '../App'
 
 const Shop = () => {
@@ -11,17 +11,35 @@ const Shop = () => {
     const [error, setError] = useState<string | null>(null)
     const [hasSearched, setHasSearched] = useState<boolean>(false)
 
+
+    const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
+        e.preventDefault();
+        setSearchTerm(e.target.value)        
+    }
+
     const handleSearch = async () => {
-        if (!searchTerm.trim()) return;
+        console.log('clicked')
+        if (!searchTerm.trim()) {
+            setError('Please, enter valid search term')
+            return;
+        }
 
         setLoading(true);
+        setError('');
         try {
             const response = await fetch('https://fakestoreapi.com/products')
             if (!response.ok){
                 throw new Error(`HTTP error - ${response.status}`)
             }
-            const responseData: Product[] = await response.json();
-            setResults(responseData)
+            const allProducts: Product[] = await response.json();
+            const filteredProducts = allProducts.filter(product =>
+                product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                product.category.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+
+            setResults(filteredProducts)
+            setHasSearched(true)
         } catch (err) {
             if (err instanceof Error) {
                 setError(err.message);
@@ -33,6 +51,12 @@ const Shop = () => {
         }
     }
 
+    const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+        if(e.key === 'Enter'){
+            handleSearch()
+        }
+    }
+
 
     return(
         <div className="shop-container">
@@ -40,12 +64,16 @@ const Shop = () => {
                 <div className="search-bar">
                     <input 
                     type="search" 
+                    onChange={onChange}
+                    value={searchTerm}
                     className="search-input" 
+                    onKeyDown={handleKeyPress}
                     placeholder="Product / Category / Gender"/>
                     <FontAwesomeIcon 
                     icon={faMagnifyingGlass} 
                     className="search-icon"
                     onClick={handleSearch}
+                    disabled={loading}
                     />
                 </div>
                 <div className="filter-bar">
@@ -57,7 +85,7 @@ const Shop = () => {
                 {hasSearched && loading && <div>Loading...</div>}
                 {hasSearched && !loading && (
                     results.map((product) => (
-                        <ProductCard product={product}></ProductCard>
+                        <ProductCard key={product.id} product={product}></ProductCard>
                     ))
                 )}
             </div>
