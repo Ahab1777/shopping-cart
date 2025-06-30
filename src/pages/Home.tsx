@@ -1,18 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './Home.module.css'
-
-interface Product {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    rating: {
-        rate: number;
-        count: number;
-    };
-}
+import type { Product } from '../App';
 
 const Home = () => {
     const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
@@ -79,7 +67,7 @@ const Home = () => {
                 {!loading && featuredProducts.map(({id, title, image}) => (
                     <div key={id}>
                         <h3>{title}</h3>
-                        <img src={image}></img>
+                        <img className={styles.featuredImg} src={image}></img>
                     </div>
                 ))}
             </div>

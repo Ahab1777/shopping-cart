@@ -1,6 +1,18 @@
 import './App.css'
 import { Link, Outlet } from 'react-router-dom'
 
+export interface Product {
+    id: number;
+    title: string;
+    price: number;
+    description: string;
+    category: string;
+    image: string;
+    rating: {
+        rate: number;
+        count: number;
+    };
+}
 
 
 function App() {
