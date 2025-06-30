@@ -15,6 +15,11 @@ export interface Product {
     };
 }
 
+const printCart = () => {
+  const cart = localStorage.getItem('cart');
+  console.log(cart)
+}
+
 
 function App() {
   return (
@@ -25,6 +30,7 @@ function App() {
           <Link to="/" className="home-btn">Home</Link>
           <Link to="shop" className="btn-shop">Shop</Link>
           <Link to="cart" className="btn-cart">Cart</Link>
+          <button onClick={printCart}>Print Cart</button>
         </div>
         <div className="content">
         <Outlet/>

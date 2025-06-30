@@ -1,6 +1,7 @@
 import { useState, type ChangeEvent } from "react";
 import type { Product } from "../App";
 import styles from './ProductCard.module.css'
+import { useCart } from "../hooks/useCart";
 
 interface ProductProps {
     product: Product;
@@ -9,6 +10,7 @@ interface ProductProps {
 const ProductCard = ({ product }: ProductProps) => {
     const { id, title, price, image, rating } = product;
     const [amount, setAmount] = useState <number>(0)
+    const { addToCart } = useCart();
 
     const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         const action = e.currentTarget.getAttribute("data-set");
@@ -29,6 +31,12 @@ const ProductCard = ({ product }: ProductProps) => {
         if (value >= 1 && value <= 100) {
             setAmount(value)
         }
+    }
+
+    const handleAddToCart = () => {
+        addToCart(product, amount);
+        setAmount(1); //reset amount after adding to cart
+        console.log(localStorage.getItem('cart'))
     }
 
     return (
@@ -61,6 +69,7 @@ const ProductCard = ({ product }: ProductProps) => {
                     <button
                     type="submit"
                     aria-label="Add to cart"
+                    onClick={handleAddToCart}
                     >Add to Cart                     
                     </button>
                 </div>  
