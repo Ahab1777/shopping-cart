@@ -1,12 +1,52 @@
 
 
-.featured-container {
-    display: flex;
-    gap: 1px;
-}
 
 .featured-img {
     height: 150px;
-    width: 150px;
     background-color: blueviolet;
+}
+
+.logo {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2.5rem;
+    margin: 1rem 0rem;
+}
+
+.searchContainer {
+    margin: 1rem 0rem;
+}
+
+.featured-container {
+    display: flex;
+    gap: 1px;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.featuredCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;   
+    max-width: 30%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    padding: 1rem;
+    min-width: 30%;
+    will-change: background-color, scale;
+    transition: 
+        background-color 0.4s ease-in-out,
+        scale 0.4s ease-in-out;
+    background-color: var(--bg-primary);
+    border-radius: 10px;
+
+}
+
+.featuredCard:hover{
+    background-color: var(--bg-secondary);
+    scale: 1.02;
+}
+
+.featuredCard > h3 {
+    text-align: center;
+    margin-bottom: 0.8rem;
 }

@@ -47,7 +47,7 @@ const Home = () => {
 
 
     return (
-        <div className={styles.home}>
+        <>
             <h2 
                 className={styles.logo}
             >Temdetudo - Fake Shop</h2>
@@ -65,14 +65,14 @@ const Home = () => {
                 {loading && (<div>Loading...</div>)}
                 {error && (<div>{error}</div>)}
                 {!loading && featuredProducts.map(({id, title, image}) => (
-                    <div key={id}>
+                    <div className={styles.featuredCard} key={id}>
                         <h3>{title}</h3>
                         <img className={styles.featuredImg} src={image}></img>
                     </div>
                 ))}
             </div>
 
-        </div>
+        </>
     )
 }
 
