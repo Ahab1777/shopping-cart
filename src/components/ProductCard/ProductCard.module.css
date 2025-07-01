@@ -1,6 +1,29 @@
 
+
+.productCard{
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem;
+    
+}
+
+.title {
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 .card-img {
     height: 150px;
-    width: 150px;
+    object-fit: contain;
+    width: 100%;
+}
+
+.title {
+    text-align: center;
 }
 

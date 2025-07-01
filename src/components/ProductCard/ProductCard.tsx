@@ -41,36 +41,40 @@ const ProductCard = ({ product }: ProductProps) => {
 
     return (
         <div className={styles.productCard} data-id={id}>
-            <h4>{title}</h4>
+            <h4 className={styles.title}>{title}</h4>
             <img src={image} alt="Product image" className={styles.cardImg} />
-            <div className="info-container">
-                <div className="">{price}</div>
-                <div className="">{rating.rate}</div>
-                <div className="number-input">
+            <div className={styles.infoContainer}>
+                <div className={styles.price}>{price}</div>
+                <div className={styles.rating}>{rating.rate}</div>
+                <div className={styles.numberInput}>
                     <button 
-                    className="decrement-btn" 
-                    aria-label="Decrease value" 
-                    data-set="decrement"
-                    onClick={handleButtonClick}
+                        className={styles.decrementBtn}
+                        aria-label="Decrease value" 
+                        data-set="decrement"
+                        onClick={handleButtonClick}
                     >−</button>
                     <input 
-                    type="number" 
-                    value={amount}
-                    onChange={handleInputChange} 
-                    min="1" 
-                    max="100" 
-                    step="1"/>
+                        type="number" 
+                        value={amount}
+                        onChange={handleInputChange} 
+                        min="1" 
+                        max="100" 
+                        step="1"
+                        className={styles.input}
+                    />
                     <button 
-                    className="increment-btn" 
-                    aria-label="Increase value" 
-                    data-set="increment"
-                    onClick={handleButtonClick}
+                        className={styles.incrementBtn}
+                        aria-label="Increase value" 
+                        data-set="increment"
+                        onClick={handleButtonClick}
                     >+</button>
                     <button
-                    type="submit"
-                    aria-label="Add to cart"
-                    onClick={handleAddToCart}
-                    >Add to Cart                     
+                        type="submit"
+                        aria-label="Add to cart"
+                        onClick={handleAddToCart}
+                        className={styles.addToCartBtn}
+                    >
+                        Add to Cart                     
                     </button>
                 </div>  
             </div>
