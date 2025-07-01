@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-import ProductCard from '../components/ProductCard'
+import ProductCard from '../../components/ProductCard/ProductCard'
 import { useState, type ChangeEvent, type KeyboardEvent } from 'react'
-import type { Product } from '../App'
+import type { Product } from '../../App'
 
 const Shop = () => {
     const [searchTerm, setSearchTerm] = useState<string>('');
@@ -73,7 +73,6 @@ const Shop = () => {
                     icon={faMagnifyingGlass} 
                     className="search-icon"
                     onClick={handleSearch}
-                    disabled={loading}
                     />
                 </div>
                 <div className="filter-bar">

@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
-import type { Product } from '../App';
-import type { CartItem } from '../contexts/cartContext';
-import { CartContext } from '../contexts/cartContext';
+import type { Product } from '../../App';
+import type { CartItem } from '../../contexts/cartContext';
+import { CartContext } from '../../contexts/cartContext';
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     const [cart, setCart] = useState<CartItem[]>(() => {
-        if (typeof window !== 'undefined') {
+        if (typeof window !== 'undefined') { //Initialize locally saved cart
             const savedCart = localStorage.getItem('cart');
             return savedCart ? JSON.parse(savedCart) : [];
         }
-        return [];
+        return [];//Initialize cart as empty array if not on browser/client
     });
 
+    //Save cart to local storage when cart changes value
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
@@ -19,14 +20,14 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     const addToCart = (product: Product, amount: number = 1) => {
         setCart(prevCart => {
             const existingItem = prevCart.find(item => item.id === product.id);
-            if (existingItem) {
+            if (existingItem) {//If item exists, change it
                 return prevCart.map(item =>
                     item.id === product.id
                         ? { ...item, quantity: item.quantity + amount }
                         : item
                 );
             }
-            return [...prevCart, { ...product, quantity: amount }];
+            return [...prevCart, { ...product, quantity: amount }];//Add item if it does not exist on cart yet
         });
     };
 

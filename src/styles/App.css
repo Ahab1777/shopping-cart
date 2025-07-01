@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 950px;
+  border: 1px solid black;
+  justify-self: center;
+}
+
+.main > :first-child {
+  position: fixed;
+}
+
+.content {
+  margin-top: 4rem;
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+}
+

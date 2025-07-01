@@ -1,6 +1,9 @@
-import './App.css'
-import { Link, Outlet } from 'react-router-dom'
-import { CartProvider } from './components/CartProvider';
+import './styles/reset.css'
+import './styles/colors.css'
+import './styles/App.css'
+import { Outlet } from 'react-router-dom'
+import { CartProvider } from './components/CartProvider/CartProvider';
+import Navbar from './components/Navbar/Navbar';
 
 export interface Product {
     id: number;
@@ -15,37 +18,26 @@ export interface Product {
     };
 }
 
-const printCart = () => {
-  const cart = localStorage.getItem('cart');
-  console.log(cart)
-}
+
+
 
 
 function App() {
-  return (
-    <CartProvider>
-      <>
-      <div className="main">
-        <div className="navbar">
-          <Link to="/" className="home-btn">Home</Link>
-          <Link to="shop" className="btn-shop">Shop</Link>
-          <Link to="cart" className="btn-cart">Cart</Link>
-          <button onClick={printCart}>Print Cart</button>
-        </div>
-        <div className="content">
-        <Outlet/>
-        </div>
-      </div>
-      <footer>
-        <p>by: Leonardo de Pinho - © 2025 The Odin Project. Fake shop website for educational purposes.  
-        <a 
-          href='https://github.com/Ahab1777/shopping-cart'
-          >GitHub</a>
-        </p>
-      </footer>
-      </>
-    </CartProvider>
-  )
+    return (
+        <CartProvider>
+            <div className='main'>
+                <Navbar />
+                  <div className="content">
+                      <Outlet/>
+                  </div>
+                <footer>
+                    <p>by: Leonardo de Pinho - © 2025 The Odin Project. Fake shop website for educational purposes.  
+                    <a href='https://github.com/Ahab1777/shopping-cart'>GitHub</a>
+                    </p>
+                </footer>
+            </div>
+        </CartProvider>
+    )
 }
 
 export default App

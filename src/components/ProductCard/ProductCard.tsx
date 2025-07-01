@@ -1,7 +1,7 @@
 import { useState, type ChangeEvent } from "react";
-import type { Product } from "../App";
+import type { Product } from "../../App";
 import styles from './ProductCard.module.css'
-import { useCart } from "../hooks/useCart";
+import { useCart } from "../../hooks/useCart";
 
 interface ProductProps {
     product: Product;
@@ -9,7 +9,7 @@ interface ProductProps {
 
 const ProductCard = ({ product }: ProductProps) => {
     const { id, title, price, image, rating } = product;
-    const [amount, setAmount] = useState <number>(0)
+    const [amount, setAmount] = useState <number>(1)
     const { addToCart } = useCart();
 
     const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
