@@ -47,17 +47,17 @@ const Home = () => {
 
 
     return (
-        <div className="home">
+        <div className={styles.home}>
             <h2 
-                className="logo"
-                >Temdetudo - Fake Shop</h2>
-            <div className="search-container">
+                className={styles.logo}
+            >Temdetudo - Fake Shop</h2>
+            <div className={styles.searchContainer}>
                 <input 
                     type="search" 
-                    className="search-input" 
+                    className={styles.searchInput} 
                     placeholder="What do you need today?"/>
                 <button 
-                    className="search-button"
+                    className={styles.searchButton}
                     type="submit"
                 >Search</button>
             </div>
