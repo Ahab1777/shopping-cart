@@ -45,22 +45,23 @@
 .numberInput{
     display: flex;
     grid-area: 2 / 1 / 3 / 3;
-
+    gap: 0.3rem;
 
 }
 
 .input {
-    max-width: 30px;
+    max-width: 20px;
     max-height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     align-self: center;
+    border-radius: 5px;
 
     /* Remove built-in arrows */
     -moz-appearance: textfield;
-
+    
 }
 
 /* This also removes the built-in arrows of the input element */
@@ -73,9 +74,27 @@
 .decrementBtn, .incrementBtn {
     max-height: 30px;
     align-self: center;
+    border: none;
+    border-radius: 100%;
+    box-shadow: 1px 1px 1px 1px black;
+    
+}
+
+.decrementBtn:active, .incrementBtn:active {
+    box-shadow: 1px 1px 1px 1px black inset;
 }
 
 .addToCartBtn{
     margin: 0.2rem;
     align-self: center;
+    user-select: none;
+    border: none;
+    box-shadow: 1px 1px 1px 1px black;
+    font-size: 0.7rem;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.addToCartBtn:active {
+    box-shadow: 1px 1px 1px 2px black inset;
 }
