@@ -6,7 +6,9 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 0.5rem;
-
+    box-shadow: 1px 1px 3px 1px var(--primary-hover);
+    border-radius: 5px;
+    gap: 0.8rem;
 }
 
 .title {
@@ -14,6 +16,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    line-height: 1.2;
+    font-size: clamp(0.8rem, 1vw, 1.2rem);
 }
 
 
@@ -23,19 +28,26 @@
     width: 100%;
 }
 
-.title {
-    text-align: center;
-}
 
 .infoContainer{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto 1fr;
     width: 100%;
+    gap: 0.2rem;
+}
+
+.price, .rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .price{
     grid-area: 1 / 1 / 2 / 2;
+    white-space: no-wrap;
+    font-size: 0.9rem;
 }
 
 .rating{

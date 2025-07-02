@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './Home.module.css'
 import type { Product } from '../App';
+import { useCart } from '../../hooks/useCart';
 
 const Home = () => {
     const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);

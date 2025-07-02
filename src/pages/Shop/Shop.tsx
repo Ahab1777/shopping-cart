@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard/ProductCard'
 import { useState, type ChangeEvent, type KeyboardEvent } from 'react'
 import type { Product } from '../../App'
 import styles from './Shop.module.css'
+import FilterBar from '../../components/FilterBar/FilterBar'
 
 const Shop = () => {
     const [searchTerm, setSearchTerm] = useState<string>('');
@@ -76,9 +77,7 @@ const Shop = () => {
                     onClick={handleSearch}
                     />
                 </div>
-                <div className={styles.filterBar}>
-                    Filter bar space
-                </div>
+                <FilterBar results={results} setResults={setResults}></FilterBar>
             </div>
             <div className={styles.productsContainer}>
                 {error && <div>Sorry, something went wrong...</div>}

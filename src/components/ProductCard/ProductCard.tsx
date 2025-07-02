@@ -2,6 +2,9 @@ import { useState, type ChangeEvent } from "react";
 import type { Product } from "../../App";
 import styles from './ProductCard.module.css'
 import { useCart } from "../../hooks/useCart";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from '@fortawesome/free-solid-svg-icons'
+
 
 interface ProductProps {
     product: Product;
@@ -44,8 +47,16 @@ const ProductCard = ({ product }: ProductProps) => {
             <h4 className={styles.title}>{title}</h4>
             <img src={image} alt="Product image" className={styles.cardImg} />
             <div className={styles.infoContainer}>
-                <div className={styles.price}>{price}</div>
-                <div className={styles.rating}>{rating.rate}</div>
+                <div className={styles.price}>
+                    US$ 
+                    <span> {price}</span>
+                </div>
+                <div className={styles.rating}>
+                    <FontAwesomeIcon 
+                    icon={faStar}>
+                    </FontAwesomeIcon>
+                    <span>{rating.rate}</span>
+                </div>
                 <div className={styles.numberInput}>
                     <button 
                         className={styles.decrementBtn}

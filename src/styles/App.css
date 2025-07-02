@@ -1,4 +1,7 @@
 
+body {
+  width: 100%;
+}
 
 .main {
   min-height: 100vh;
@@ -6,9 +9,11 @@
   flex-direction: column;
   max-width: 950px;
   width: 100%;
-  border: 1px solid black;
   justify-self: center;
   align-items: center;
+
+  /* testing */
+  border: 1px solid black;
 }
 
 .main > :first-child {
@@ -17,6 +22,7 @@
 
 .content {
   margin-top: 4rem;
+  margin-bottom: 4rem;
   display: flex;
   flex-direction: column;
   max-width: 800px;
@@ -27,6 +33,7 @@
 
 footer {
   position: fixed;
+  height: 20px;
   bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
