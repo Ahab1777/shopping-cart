@@ -1,0 +1,5 @@
+.container {
+    padding: 0.5rem;
+    box-shadow: 1px 1px 3px 1px var(--primary-hover);
+    border-radius: 5px;
+}

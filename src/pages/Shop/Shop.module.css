@@ -18,3 +18,10 @@
 h4 {
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+.searchFilterContainer {
+    padding: 1rem 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

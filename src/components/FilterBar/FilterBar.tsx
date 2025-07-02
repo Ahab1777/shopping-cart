@@ -1,41 +1,25 @@
 import type { Dispatch, SetStateAction } from "react";
-import type { Product } from "../../App"
-
+import styles from './FilterBar.module.css'
 
 interface FilterBarProps {
-    results: Product[];
-    setResults: Dispatch<SetStateAction<Product[]>>;
+    setFilter: Dispatch<SetStateAction<string>>;
 }
 
-const FilterBar = ({results, setResults}: FilterBarProps) => {
+const FilterBar = ({setFilter}: FilterBarProps) => {
 
     const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const value = e.target.value;
-        const sortedResults = [...results];
-        switch (value) {
-            case "phl":
-                sortedResults.sort((a, b) => b.price - a.price);
-                break;
-            case "plh":
-                sortedResults.sort((a, b) => a.price - b.price);
-                break;
-            case "rhl":
-                sortedResults.sort((a, b) => b.rating.rate - a.rating.rate);
-                break;
-            case "rlh":
-                sortedResults.sort((a, b) => a.rating.rate - b.rating.rate);
-                break;
-            default:
-                break;
-        }
-        setResults(sortedResults);
+       setFilter(value)
     };
 
 
     return (
-        <div className="FilterBar">
-            <label htmlFor="filter-select">Sort by:</label>
-            <select 
+        <div className={styles.filterBar}>
+            <label 
+            className={styles.label}
+            htmlFor="filter-select">Sort by:</label>
+            <select
+            className={styles.select} 
             id="filter-select"
             onChange={handleFilterChange}>
                 <option value="phl">Price - High to Low</option>

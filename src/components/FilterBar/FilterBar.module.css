@@ -1,0 +1,19 @@
+
+
+
+
+.select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 150px;
+    text-align: center;
+    border: none;
+    box-shadow: 1px 1px 1px 1px grey;
+    margin-left: 1rem;
+    border-radius: 5px;
+}
+
+.select:hover {
+    box-shadow: 1px 1px 3px 1px var(--primary-hover);
+}

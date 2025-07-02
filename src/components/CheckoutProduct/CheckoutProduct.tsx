@@ -2,6 +2,7 @@ import { useCart } from "../../hooks/useCart";
 import type { CartItem } from "../../contexts/cartContext";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons/faTrashCan";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styles from "./CheckoutProduct.module.css";
 
 interface CartItemProps {
     cartItem: CartItem;
@@ -19,15 +20,15 @@ const CheckoutProduct = ({ cartItem }: CartItemProps) => {
 
 
     return (
-        <div className="checkout-product">
-            <div className="title">{title}</div>
-            <div className="quantity">Qtt x<span>{quantity}</span></div>
-            <div className="total">Total $<span>{price * quantity}</span></div>
+        <div className={styles.container}>
+            <div className={styles.title}>{title}</div>
+            <div className={styles.quantity}>Qtt x<span>{quantity}</span></div>
+            <div className={styles.total}>Total $<span>{price * quantity}</span></div>
             <FontAwesomeIcon 
             icon={faTrashCan} 
-            className="delete"
+            className={styles.delete}
             onClick={handleDelete}
-            ></FontAwesomeIcon>
+            />
         </div>
     )
 }

@@ -5,6 +5,7 @@ import { useState, type ChangeEvent, type KeyboardEvent } from 'react'
 import type { Product } from '../../App'
 import styles from './Shop.module.css'
 import FilterBar from '../../components/FilterBar/FilterBar'
+import { useEffect } from 'react';
 
 const Shop = () => {
     const [searchTerm, setSearchTerm] = useState<string>('');
@@ -12,6 +13,35 @@ const Shop = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null)
     const [hasSearched, setHasSearched] = useState<boolean>(false)
+    const [filter, setFilter] = useState<string>('phl')
+
+    const filterProducts = (productList: Product[]) => {
+        const sortedResults = [...productList];
+        switch (filter) {
+            case "phl":
+                sortedResults.sort((a, b) => b.price - a.price);
+                break;
+            case "plh":
+                sortedResults.sort((a, b) => a.price - b.price);
+                break;
+            case "rhl":
+                sortedResults.sort((a, b) => b.rating.rate - a.rating.rate);
+                break;
+            case "rlh":
+                sortedResults.sort((a, b) => a.rating.rate - b.rating.rate);
+                break;
+            default:
+                break;
+        }
+        setResults(sortedResults);
+    };
+
+    useEffect(() => {
+        if (hasSearched) {
+            filterProducts(results);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [filter]);
 
 
     const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -39,8 +69,10 @@ const Shop = () => {
                 product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 product.category.toLowerCase().includes(searchTerm.toLowerCase())
             );
-
-            setResults(filteredProducts)
+            // add filter here
+            filterProducts(filteredProducts)
+            //setResults is not necessary here since filterProducts already calls it 
+            // setResults(filteredProducts)
             setHasSearched(true)
         } catch (err) {
             if (err instanceof Error) {
@@ -77,7 +109,7 @@ const Shop = () => {
                     onClick={handleSearch}
                     />
                 </div>
-                <FilterBar results={results} setResults={setResults}></FilterBar>
+                <FilterBar setFilter={setFilter}></FilterBar>
             </div>
             <div className={styles.productsContainer}>
                 {error && <div>Sorry, something went wrong...</div>}
