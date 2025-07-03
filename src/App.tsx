@@ -25,11 +25,11 @@ export interface Product {
 function App() {
     return (
         <CartProvider>
-            <div className='main'>
+            <div className='main'> 
                 <Navbar />
-                  <div className="content">
-                      <Outlet/>
-                  </div>
+                <div className="content">
+                    <Outlet/>
+                </div>
                 <footer>
                     <p>by: Leonardo de Pinho - © 2025 The Odin Project. Fake shop website for educational purposes.  
                     <a href='https://github.com/Ahab1777/shopping-cart'>GitHub</a>
