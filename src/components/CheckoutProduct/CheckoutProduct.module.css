@@ -1,5 +1,53 @@
 .container {
-    padding: 0.5rem;
+    padding: 0rem;
     box-shadow: 1px 1px 3px 1px var(--primary-hover);
     border-radius: 5px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
+    min-height: 120px;
+}
+
+.img {
+    max-height: 80px;
+    width: auto;
+    max-width: 80px;
+    grid-area: 1/1/4/2;
+    justify-self: center;
+    align-self: center;
+    padding: 0.5rem;
+}
+
+.title{
+    grid-area: 1/2/4/4;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    font-weight: 800;
+}
+
+.quantity {
+    grid-area: 2/4/3/5;
+    justify-self: center;
+    align-self: center;
+}
+
+.total {
+    grid-area: 1/5/3/6;
+    justify-self: center;
+    align-self: center;
+}
+
+.delete {
+    grid-area: 3/5/4/6;
+    justify-self: end;
+    align-self: center;
+    padding-right: 0.5rem;
+    transition: scale 0.2s ease-in
+}
+
+.delete:hover{
+    color: red;
+    scale: 1.1;
+    cursor: pointer;
 }

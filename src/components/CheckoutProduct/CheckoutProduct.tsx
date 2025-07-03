@@ -21,9 +21,10 @@ const CheckoutProduct = ({ cartItem }: CartItemProps) => {
 
     return (
         <div className={styles.container}>
+            <img src={image} alt="Product image" className={styles.img} />
             <div className={styles.title}>{title}</div>
-            <div className={styles.quantity}>Qtt x<span>{quantity}</span></div>
-            <div className={styles.total}>Total $<span>{price * quantity}</span></div>
+            <div className={styles.quantity}>x <span>{quantity}</span></div>
+            <div className={styles.total}>Total $<span>{(price * quantity).toFixed(2)}</span></div>
             <FontAwesomeIcon 
             icon={faTrashCan} 
             className={styles.delete}
