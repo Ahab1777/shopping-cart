@@ -5,6 +5,7 @@
     justify-content: end;
     background-color: var(--bg-primary);
     box-shadow: 2px 0px 5px var(--secondary-hover);
+    z-index: 3;
 }
 
 .cartButton, .homeButton, .shopButton{
