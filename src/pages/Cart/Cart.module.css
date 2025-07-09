@@ -27,12 +27,27 @@
     padding: 0.5rem;
     box-shadow: 1px 1px 3px 1px var(--primary-hover);
     border-radius: 5px;
-    
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;    
     /* stays in view */
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 0;
     background: white;
     top: 5rem;
 }
 
+.checkoutH3{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin: 0.5rem 0.3rem;
+}
+
+.checkoutH4{
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+
+}
