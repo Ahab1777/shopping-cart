@@ -20,8 +20,22 @@ h4 {
 }
 
 .searchFilterContainer {
-    padding: 1rem 3rem;
+    margin: 0.5rem 0.5rem;
     width: 100%;
+    max-width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+.searchIcon {
+    padding-left: 0.5rem;
+}
+
+.noMatch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
 }

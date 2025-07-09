@@ -102,7 +102,7 @@ const Shop = () => {
                     value={searchTerm}
                     className={styles.searchInput} 
                     onKeyDown={handleKeyPress}
-                    placeholder="Product / Category / Gender"/>
+                    placeholder="Search here..."/>
                     <FontAwesomeIcon 
                     icon={faMagnifyingGlass} 
                     className={styles.searchIcon}
@@ -114,6 +114,7 @@ const Shop = () => {
             <div className={styles.productsContainer}>
                 {error && <div>Sorry, something went wrong...</div>}
                 {hasSearched && loading && <div>Loading...</div>}
+                {hasSearched && !loading && (results.length === 0) && <div className={styles.noMatch}>Sorry, no matching results.</div> }
                 {hasSearched && !loading && (
                     results.map((product) => (
                         <ProductCard key={product.id} product={product}></ProductCard>
