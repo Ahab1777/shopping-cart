@@ -44,6 +44,7 @@
 .featuredCard:hover{
     background-color: var(--bg-secondary);
     scale: 1.01;
+    cursor: pointer;
 }
 
 .featuredCard > h3 {

@@ -47,12 +47,18 @@ const Home = () => {
         fetchFeaturedProducts()
     }, []);
 
-    function handleSerach(e: React.FormEvent) {
+    function handleSearch(e: React.FormEvent) {
         e.preventDefault();
         if (searchTerm.trim()) {
             navigate(`/shop?search=${encodeURIComponent(searchTerm)}`)
         }
     } 
+
+    function handleClick(itemTitle: string) {
+        if (itemTitle.trim()) {
+            navigate(`/shop?search=${encodeURIComponent(itemTitle)}`)
+        }
+    }
 
     return (
         <>
@@ -61,7 +67,7 @@ const Home = () => {
             >Temdetudo - Fake Shop</h2>
             <form 
             className={styles.searchContainer}
-            onSubmit={handleSerach}>
+            onSubmit={handleSearch}>
                 <input 
                     type="search" 
                     className={styles.searchInput}
@@ -76,7 +82,10 @@ const Home = () => {
                 {loading && (<div>Loading...</div>)}
                 {error && (<div>{error}</div>)}
                 {!loading && featuredProducts.map(({id, title, image}) => (
-                    <div className={styles.featuredCard} key={id}>
+                    <div 
+                    className={styles.featuredCard} 
+                    key={id}
+                    onClick={() => handleClick(title)}>
                         <h3>{title}</h3>
                         <img className={styles.featuredImg} src={image}></img>
                     </div>
