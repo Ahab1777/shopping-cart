@@ -1,0 +1,50 @@
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal{
+    background-color: var(--bg-secondary);
+    max-width: 400px;
+    width: 80%;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px 1px var(--primary-hover);
+    
+}
+
+.cancelButton {
+    width: 30px;
+    height: 30px;
+    justify-self: end;
+    margin: 0.3rem;
+    border-radius: 50%;
+}
+
+.message {
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-height: 60px;
+}
+
+.confirmButton {
+    margin: 0.3rem;
+    width: 80%;
+    max-width: 200px;
+    justify-self: center;
+    border-radius: 10px;
+    padding: 0.2rem;
+}
+
+
+
+

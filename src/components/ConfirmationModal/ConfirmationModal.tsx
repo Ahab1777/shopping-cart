@@ -16,6 +16,13 @@ const ConfirmationModal = ({confirmationMessage, isModalOpen, setIsModalOpen, on
         setIsModalOpen(false);
     }
 
+    function handleConfirmation(e: React.MouseEvent) {
+        e.preventDefault();
+        e.stopPropagation();
+        onClose()
+        setIsModalOpen(false);
+    }
+
     return(
         <>
         {isModalOpen ? (
@@ -23,18 +30,22 @@ const ConfirmationModal = ({confirmationMessage, isModalOpen, setIsModalOpen, on
             className={styles.backdrop} 
             onClick={handleCancel}>
                 <div className={styles.modal}>
-                    <div>{confirmationMessage}</div>
                     <button
+                    className={styles.cancelButton}
                     onClick={handleCancel}
                     >X</button>
+                    <div
+                    className={styles.message}
+                    >{confirmationMessage}</div>
                     <button
-                    onClick={onClose}
+                    className={styles.confirmButton}
+                    onClick={handleConfirmation}
                     >Confirm</button>
                 </div>
             </div>
 
         ) : null}
-        </>
+        </>)
 }
 
 export default ConfirmationModal

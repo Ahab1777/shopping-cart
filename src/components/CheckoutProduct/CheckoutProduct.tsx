@@ -3,6 +3,8 @@ import type { CartItem } from "../../contexts/cartContext";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons/faTrashCan";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./CheckoutProduct.module.css";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import { useState } from "react";
 
 interface CartItemProps {
     cartItem: CartItem;
@@ -11,9 +13,14 @@ interface CartItemProps {
 const CheckoutProduct = ({ cartItem }: CartItemProps) => {
     const { addToCart, removeFromCart, clearCart, cartTotal, cartItemCount} = useCart();
     const {id, title, price, image, rating, quantity} = cartItem;
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     
     const handleDelete = () => {
         removeFromCart(id);
+    }
+
+    const handleClick = () => {
+        setIsModalOpen(true)
     }
 
     
@@ -28,8 +35,14 @@ const CheckoutProduct = ({ cartItem }: CartItemProps) => {
             <FontAwesomeIcon 
             icon={faTrashCan} 
             className={styles.delete}
-            onClick={handleDelete}
+            onClick={handleClick}
             />
+            <ConfirmationModal
+            confirmationMessage={`Remove ${title} from cart?`}
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+            onClose={handleDelete}
+            ></ConfirmationModal>
         </div>
     )
 }
