@@ -6,14 +6,19 @@ import type { Product } from '../../App'
 import styles from './Shop.module.css'
 import FilterBar from '../../components/FilterBar/FilterBar'
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom'
 
 const Shop = () => {
-    const [searchTerm, setSearchTerm] = useState<string>('');
     const [results, setResults] = useState<Product[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null)
     const [hasSearched, setHasSearched] = useState<boolean>(false)
     const [filter, setFilter] = useState<string>('phl')
+    // Router navigation
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const initialSearch = params.get('search') || ''; 
+    const [searchTerm, setSearchTerm] = useState<string>(initialSearch);
 
     const filterProducts = (productList: Product[]) => {
         const sortedResults = [...productList];
@@ -35,6 +40,13 @@ const Shop = () => {
         }
         setResults(sortedResults);
     };
+
+    useEffect(() => {
+        if (initialSearch) {
+            handleSearch(); // Optionally trigger search on mount if param exists
+        }
+        // eslint-disable-next-line
+    }, [initialSearch]);    
 
     useEffect(() => {
         if (hasSearched) {

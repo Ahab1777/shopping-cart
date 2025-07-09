@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import styles from './Home.module.css'
-import type { Product } from '../App';
-import { useCart } from '../../hooks/useCart';
+import type { Product } from '../../App';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null)
+    const [searchTerm, setSearchTerm] = useState<string>('');
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -45,23 +47,31 @@ const Home = () => {
         fetchFeaturedProducts()
     }, []);
 
-
+    function handleSerach(e: React.FormEvent) {
+        e.preventDefault();
+        if (searchTerm.trim()) {
+            navigate(`/shop?search=${encodeURIComponent(searchTerm)}`)
+        }
+    } 
 
     return (
         <>
             <h2 
                 className={styles.logo}
             >Temdetudo - Fake Shop</h2>
-            <div className={styles.searchContainer}>
+            <form 
+            className={styles.searchContainer}
+            onSubmit={handleSerach}>
                 <input 
                     type="search" 
-                    className={styles.searchInput} 
+                    className={styles.searchInput}
+                    onChange={e => setSearchTerm(e.target.value)} 
                     placeholder="What do you need today?"/>
                 <button 
                     className={styles.searchButton}
                     type="submit"
                 >Search</button>
-            </div>
+            </form>
             <div className={styles.featuredContainer}>
                 {loading && (<div>Loading...</div>)}
                 {error && (<div>{error}</div>)}
