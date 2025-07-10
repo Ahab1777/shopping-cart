@@ -4,6 +4,8 @@ import styles from './ProductCard.module.css'
 import { useCart } from "../../hooks/useCart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { createPortal } from "react-dom";
+import Toast from "../Toast/Toast";
 
 
 interface ProductProps {
@@ -14,6 +16,7 @@ const ProductCard = ({ product }: ProductProps) => {
     const { id, title, price, image, rating } = product;
     const [amount, setAmount] = useState <number>(1)
     const { addToCart } = useCart();
+    const [isToastOpen, setIsToastOpen] = useState<boolean>(false)
 
     const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         const action = e.currentTarget.getAttribute("data-set");
@@ -39,8 +42,10 @@ const ProductCard = ({ product }: ProductProps) => {
     const handleAddToCart = () => {
         addToCart(product, amount);
         setAmount(1); //reset amount after adding to cart
-        console.log(localStorage.getItem('cart'))
+        setIsToastOpen(true)
     }
+
+    const portalTarget = document.getElementById('navbarCartContainer')
 
     return (
         <div className={styles.productCard} data-id={id}>
@@ -87,6 +92,14 @@ const ProductCard = ({ product }: ProductProps) => {
                     >
                         Add to Cart                     
                     </button>
+                    {portalTarget && createPortal(
+                        <Toast
+                        message={'Item added!'}
+                        show={isToastOpen}
+                        onClose={() => setIsToastOpen(false)}
+                        ></Toast>,
+                        portalTarget
+                    )}
                 </div>  
             </div>
         </div>
