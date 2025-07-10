@@ -51,3 +51,18 @@
     font-size: 1.3rem;
 
 }
+
+.divider {
+  border-top: 1px solid #ddd; /* Line style */
+  margin: 10px 0; /* Spacing */
+}
+
+.priceContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.totalSpan {
+    font-weight: 800;
+}
