@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent } from "react";
+import { useLayoutEffect, useState, type ChangeEvent } from "react";
 import type { Product } from "../../App";
 import styles from './ProductCard.module.css'
 import { useCart } from "../../hooks/useCart";
@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { createPortal } from "react-dom";
 import Toast from "../Toast/Toast";
+import type { ToastPosition } from "../Toast/Toast";
 
 
 interface ProductProps {
@@ -17,6 +18,7 @@ const ProductCard = ({ product }: ProductProps) => {
     const [amount, setAmount] = useState <number>(1)
     const { addToCart } = useCart();
     const [isToastOpen, setIsToastOpen] = useState<boolean>(false)
+    const [toastPosition, setToastPosition] = useState<ToastPosition | null>(null)
 
     const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         const action = e.currentTarget.getAttribute("data-set");
@@ -46,6 +48,19 @@ const ProductCard = ({ product }: ProductProps) => {
     }
 
     const portalTarget = document.getElementById('navbarCartContainer')
+
+    useLayoutEffect(() => {
+        const container = document.getElementById('navbarCartContainer');
+        if (container) {
+            const rect = container.getBoundingClientRect();
+            setToastPosition({
+                top: rect.bottom + window.scrollY,
+                left: rect.left + window.scrollX,
+                width: rect.width,
+            });
+            console.log(rect)
+        }
+    }, [isToastOpen]); // recalculate when toast opens    
 
     return (
         <div className={styles.productCard} data-id={id}>
@@ -96,7 +111,9 @@ const ProductCard = ({ product }: ProductProps) => {
                         <Toast
                         message={'Item added!'}
                         show={isToastOpen}
+                        duration={200000}
                         onClose={() => setIsToastOpen(false)}
+                        position={toastPosition ?? undefined}
                         ></Toast>,
                         portalTarget
                     )}
