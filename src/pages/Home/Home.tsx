@@ -82,6 +82,9 @@ const Home = () => {
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
             </form>
+            <h3
+            className={styles.featuredHeader}
+            >Featured products</h3>
             <div className={styles.featuredContainer}>
                 {loading && (<div>Loading...</div>)}
                 {error && (<div>{error}</div>)}

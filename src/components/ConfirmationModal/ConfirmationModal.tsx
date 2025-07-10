@@ -2,13 +2,13 @@ import styles from './ConfirmationModal.module.css'
 import { createPortal } from 'react-dom';
 
 interface ConfirmationModalProps {
-    confirmationMessage: string;
+    product: string;
     isModalOpen: boolean;
     setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
     onClose: () => void;
 }
 
-const ConfirmationModal = ({confirmationMessage, isModalOpen, setIsModalOpen, onClose}: ConfirmationModalProps) => {
+const ConfirmationModal = ({product, isModalOpen, setIsModalOpen, onClose}: ConfirmationModalProps) => {
 
 
     function handleCancel(e: React.MouseEvent) {
@@ -38,7 +38,7 @@ const ConfirmationModal = ({confirmationMessage, isModalOpen, setIsModalOpen, on
                         >X</button>
                         <div
                         className={styles.message}
-                        >{confirmationMessage}</div>
+                        >Remove <span>{product}</span> from your cart?</div>
                         <button
                         className={styles.confirmButton}
                         onClick={handleConfirmation}

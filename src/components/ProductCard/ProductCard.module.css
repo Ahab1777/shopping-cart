@@ -19,7 +19,9 @@
     justify-content: center;
     text-align: center;
     line-height: 1.2;
-    font-size: clamp(0.8rem, 1vw, 1.2rem);
+    font-size: clamp(0.8rem, 1.1vw, 1.2rem);
+    font-family: var(--font-tertiary);
+    font-weight: 400;
 }
 
 

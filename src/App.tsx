@@ -1,6 +1,7 @@
 import './styles/reset.css'
 import './styles/colors.css'
 import './styles/App.css'
+import './styles/fonts.css'
 import { Outlet } from 'react-router-dom'
 import { CartProvider } from './components/CartProvider/CartProvider';
 import Navbar from './components/Navbar/Navbar';

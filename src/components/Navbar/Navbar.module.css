@@ -29,6 +29,10 @@
         scale: 0.9;
 }
 
+.navbar *{
+    font-family: var(--font-secondary);
+}
+
 .homeButton {
     margin-right: auto;
     padding: 1rem;

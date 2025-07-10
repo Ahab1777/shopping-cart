@@ -21,10 +21,10 @@ const Cart = () => {
                 <h3 className={styles.checkoutH3}>Temdetudo</h3>
                 <div className={styles.divider}></div>
                 <h4 className={styles.checkoutH4}>Cart content:</h4>
-                <div 
-                className={styles.totalQuantity}
-                >Quantity: <span className="">{cartItemCount.toFixed(0)}</span></div>
                 <div className={styles.priceContainer}>
+                    <div 
+                    className={styles.totalQuantity}
+                    >Quantity: <span className="">{cartItemCount.toFixed(0)}</span></div>
                     <div 
                     className={styles.productPriceContainer}
                     >Products: US$

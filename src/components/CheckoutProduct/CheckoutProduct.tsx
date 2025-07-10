@@ -38,7 +38,7 @@ const CheckoutProduct = ({ cartItem }: CartItemProps) => {
             onClick={handleClick}
             />
             <ConfirmationModal
-            confirmationMessage={`Remove ${title} from cart?`}
+            product={title}
             isModalOpen={isModalOpen}
             setIsModalOpen={setIsModalOpen}
             onClose={handleDelete}
