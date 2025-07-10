@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import styles from './Home.module.css'
 import type { Product } from '../../App';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const Home = () => {
     const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
@@ -76,7 +78,9 @@ const Home = () => {
                 <button 
                     className={styles.searchButton}
                     type="submit"
-                >Search</button>
+                >
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                </button>
             </form>
             <div className={styles.featuredContainer}>
                 {loading && (<div>Loading...</div>)}

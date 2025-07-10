@@ -1,11 +1,5 @@
 
 
-
-.featured-img {
-    height: 150px;
-    background-color: blueviolet;
-}
-
 .logo {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 2.5rem;
@@ -14,6 +8,23 @@
 
 .searchContainer {
     margin: 1rem 0rem;
+}
+
+.searchInput {
+    margin-right: 0.5rem;
+}
+
+.searchButton {
+  appearance: none;
+  -webkit-appearance: none; /* For Safari */
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  color: inherit; /* Optional: Use parent text color */
 }
 
 .featured-container {
@@ -50,5 +61,11 @@
 .featuredCard > h3 {
     text-align: center;
     margin-bottom: 0.8rem;
+}
+
+.featuredCard > img {
+    height: 150px;
+    object-fit: contain;
+    width: 100%;
 }
 
