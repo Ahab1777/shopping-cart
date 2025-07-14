@@ -1,6 +1,10 @@
 .toast{
-    height: 400px;
-    width: 400px;
+    position: absolute;
+    height: 50px;
+    max-width: 100px;
+    
     background-color: blue;
-    visibility: visible;
+    color: white;
+    z-index: 3;
 }
+

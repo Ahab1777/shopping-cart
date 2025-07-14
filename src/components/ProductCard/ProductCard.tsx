@@ -29,7 +29,7 @@ const ProductCard = ({ product }: ProductProps) => {
             if (action === "decrement") {
                 return Math.max(prev - 1, 1);
             }
-            return prev;
+                return prev;
         });
     };
 
@@ -47,10 +47,10 @@ const ProductCard = ({ product }: ProductProps) => {
         setIsToastOpen(true)
     }
 
-    const portalTarget = document.getElementById('navbarCartContainer')
+    const portalTarget = document.getElementById('portal-root')
 
     useLayoutEffect(() => {
-        const container = document.getElementById('navbarCartContainer');
+        const container = document.getElementById('portal-root');
         if (container) {
             const rect = container.getBoundingClientRect();
             setToastPosition({
