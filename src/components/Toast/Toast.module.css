@@ -1,10 +1,47 @@
 .toast{
     position: absolute;
     height: 50px;
-    max-width: 100px;
-    
-    background-color: blue;
-    color: white;
+    padding: 0px 10px;
+    top: 10vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--success-color);
+    color: var(--text-secondary);
     z-index: 3;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px 1px var(--primary-hover);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-tertiary);
 }
 
+@keyframes showToast {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -80%); /* X and Y */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.show {
+    animation: showToast 0.8s forwards;
+}
+
+@keyframes hideToast {
+    0% {
+        opacity: 1;
+        /* transform: translate(-50%, -50%); */
+    }
+    100% {
+        opacity: 0;
+        /* transform: translate(-50%, -70%);  */
+    }
+}
+
+.hide {
+    animation: hideToast 0.3s forwards;
+}
