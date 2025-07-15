@@ -24,29 +24,36 @@ const Cart = () => {
                 <div className={styles.priceContainer}>
                     <div 
                     className={styles.totalQuantity}
-                    >Quantity: <span className="">{cartItemCount.toFixed(0)}</span></div>
+                        >Quantity: <span className="">{cartItemCount.toFixed(0)}
+                        </span>
+                    </div>
                     <div 
                     className={styles.productPriceContainer}
-                    >Products: US$
+                    >Products:
                         <span 
                         className={styles.productPriceSpan}
-                        >{cartTotal.toFixed(2)}
+                        >
+                            <br></br>
+                            US${cartTotal.toFixed(2)}
                         </span>
                     </div>  
                     <div
                     className={styles.taxesContainer}
-                    >Taxes: US$
-                    <span
-                        className={styles.taxesSpan}
-                        >{(cartTotal*0.06).toFixed(2)}
+                    >Taxes: 
+                        <span
+                        className={styles.taxesSpan}>
+                            <br></br>
+                            US${(cartTotal*0.06).toFixed(2)}
                         </span>
                     </div>
                     <div
                     className={styles.totalContainer}
-                    >Total: US$
+                    >Total:
                     <span 
                         className={styles.totalSpan}
-                        >{(cartTotal*0.06 + cartTotal).toFixed(2)}
+                        >
+                            <br></br>
+                            US${(cartTotal*0.06 + cartTotal).toFixed(2)}
                         </span>
                     </div>
                 </div>

@@ -32,7 +32,6 @@
     gap: 0.5rem;    
     /* stays in view */
     position: sticky;
-    top: 0;
     z-index: 0;
     background: white;
     top: 5rem;
@@ -75,6 +74,36 @@
     font-size: 0.8rem;
 }
 
-.totalSpan {
+.totalContainer > .totalSpan {
     font-weight: 800;
+    font-size: 1.5rem;
+}
+
+@media (min-width: 551px) and (max-width: 900px) {
+    .checkoutPanel{
+        flex: 1.5;
+        padding: 1rem 1.5rem;
+    }
+}
+
+
+@media (max-width: 550px) {
+    .container {
+        flex-direction: column;
+        gap: 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .checkoutPanel {
+        min-width: 250px;
+        max-width: 90vw;
+        align-self: center;
+        position: absolute;
+
+    }
+
+    .itemList {
+        position: absolute;
+    }
 }
