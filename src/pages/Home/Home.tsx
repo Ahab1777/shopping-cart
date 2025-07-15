@@ -66,7 +66,7 @@ const Home = () => {
         <>
             <h2 
                 className={styles.logo}
-            >Temdetudo - Fake Shop</h2>
+            >Temdetudo <br></br> <span className={styles.logoSpan}>Fake Shop</span></h2>
             <form 
             className={styles.searchContainer}
             onSubmit={handleSearch}>
