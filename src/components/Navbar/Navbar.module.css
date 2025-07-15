@@ -29,6 +29,14 @@
         scale: 0.9;
 }
 
+
+.cartButtonAnchor{
+    margin: 0;
+
+    height: 100%;
+    width: 100%;
+}
+
 @media (max-width: 550px) {
     .navbar *{
         font-size: 1rem;

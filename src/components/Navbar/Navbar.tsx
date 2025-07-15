@@ -9,12 +9,10 @@ const Navbar = () => {
         <div className={styles.navbar}>
             <Link to="/" className={styles.homeButton}>Home</Link>
             <Link to="shop" className={styles.shopButton}>Shop</Link>
-            <div id='navbarCartContainer' className={styles.cartButton}>
-                <Link to="cart">
+                <Link id='navbarCartContainer' className={styles.cartButton} to="cart">
                 Cart {cartItemCount > 0 && <span className={styles.cartBadge}>({cartItemCount})</span>}
                 </Link>
             </div>
-        </div>
     );
 };
 
