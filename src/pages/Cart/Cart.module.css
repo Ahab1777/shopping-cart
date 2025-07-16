@@ -89,7 +89,7 @@
 
 @media (max-width: 550px) {
     .container {
-        flex-direction: column;
+        flex-direction:column-reverse;
         gap: 0;
         align-items: center;
         justify-content: center;
@@ -99,11 +99,17 @@
         min-width: 250px;
         max-width: 90vw;
         align-self: center;
-        position: absolute;
-
+        position:relative ;
+        top: 0;
     }
 
     .itemList {
-        position: absolute;
+        position: relative;
+        top: 0;
+    }
+
+    .itemList * {
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }

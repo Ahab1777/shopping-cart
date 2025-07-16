@@ -41,7 +41,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    max-height: 60px;
+    /* max-height: 60px; */
     font-family: var(--font-tertiary);
 }
 
@@ -74,6 +74,11 @@
     scale: 1.03;
 }
 
+@media (max-width: 900px) {
+    .message {
+        font-size: 0.8rem;
+    }
+}
 
 
 
