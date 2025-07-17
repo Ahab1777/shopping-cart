@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import type { Product } from '../../App';
 import type { CartItem } from '../../contexts/cartContext';
 import { CartContext } from '../../contexts/cartContext';
@@ -39,14 +39,22 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         setCart([]);
     };
 
-    const cartTotal = cart.reduce(
-        (total, item) => total + item.price * item.quantity,
-        0
+    const cartTotal = useMemo(
+        () =>
+            cart.reduce(
+                (total, item) => total + item.price * item.quantity,
+                0
+            ),
+        [cart]
     );
+    
 
-    const cartItemCount = cart.reduce(
-        (count, item) => count + item.quantity,
-        0
+    const cartItemCount = useMemo(
+        () => cart.reduce(
+            (count, item) => count + item.quantity,
+            0
+        ),
+        [cart]
     );
 
     return (
