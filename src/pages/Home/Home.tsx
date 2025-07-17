@@ -69,15 +69,18 @@ const Home = () => {
             >Temdetudo <br></br> <span className={styles.logoSpan}>Fake Shop</span></h2>
             <form 
             className={styles.searchContainer}
-            onSubmit={handleSearch}>
+            onSubmit={handleSearch}
+            aria-label="Search products">
                 <input 
                     type="search" 
                     className={styles.searchInput}
                     onChange={e => setSearchTerm(e.target.value)} 
-                    placeholder="What do you need today?"/>
+                    placeholder="What do you need today?"
+                    aria-label="Search input"/>
                 <button 
                     className={styles.searchButton}
                     type="submit"
+                    aria-label="Submit search"
                 >
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
@@ -92,9 +95,10 @@ const Home = () => {
                     <div 
                     className={styles.featuredCard} 
                     key={id}
-                    onClick={() => handleClick(title)}>
+                    onClick={() => handleClick(title)}
+                    aria-label={`Featured product: ${title}`}>
                         <h3>{title}</h3>
-                        <img className={styles.featuredImg} src={image}></img>
+                        <img className={styles.featuredImg} src={image} alt={title} />
                     </div>
                 ))}
             </div>
