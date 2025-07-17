@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent } from "react";
+import { useState, type ChangeEvent, memo } from "react";
 import type { Product } from "../../App";
 import styles from './ProductCard.module.css'
 import { useCart } from "../../hooks/useCart";
@@ -109,4 +109,4 @@ const ProductCard = ({ product }: ProductProps) => {
     )
 }
 
-export default ProductCard
+export default memo(ProductCard)

@@ -4,7 +4,7 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons/faTrashCan";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./CheckoutProduct.module.css";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
-import { useState } from "react";
+import { useState, memo } from "react";
 
 interface CartItemProps {
     cartItem: CartItem;
@@ -50,4 +50,4 @@ const CheckoutProduct = ({ cartItem }: CartItemProps) => {
 }
 
 
-export default CheckoutProduct
+export default memo(CheckoutProduct)

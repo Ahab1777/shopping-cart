@@ -1,5 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
 import styles from './FilterBar.module.css'
+import { memo } from "react";
 
 interface FilterBarProps {
     setFilter: Dispatch<SetStateAction<string>>;
@@ -36,4 +37,4 @@ const FilterBar = ({setFilter}: FilterBarProps) => {
     )
 }
 
-export default FilterBar
+export default memo(FilterBar)
