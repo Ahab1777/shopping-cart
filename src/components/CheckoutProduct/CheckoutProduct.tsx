@@ -28,20 +28,22 @@ const CheckoutProduct = ({ cartItem }: CartItemProps) => {
 
     return (
         <div className={styles.container}>
-            <img src={image} alt="Product image" className={styles.img} />
-            <div className={styles.title}>{title}</div>
-            <div className={styles.quantity}>x <span>{quantity}</span></div>
-            <div className={styles.total}>Total $<span>{(price * quantity).toFixed(2)}</span></div>
+            <img src={image} alt="Product image" className={styles.img} aria-label={`Image of ${title}`} />
+            <div className={styles.title} aria-label="Product title">{title}</div>
+            <div className={styles.quantity} aria-label="Product quantity">x <span>{quantity}</span></div>
+            <div className={styles.total} aria-label="Total price">Total $<span>{(price * quantity).toFixed(2)}</span></div>
             <FontAwesomeIcon 
-            icon={faTrashCan} 
-            className={styles.delete}
-            onClick={handleClick}
+                icon={faTrashCan} 
+                className={styles.delete}
+                onClick={handleClick}
+                aria-label={`Remove ${title} from cart`}
+                tabIndex={0}
             />
             <ConfirmationModal
-            product={title}
-            isModalOpen={isModalOpen}
-            setIsModalOpen={setIsModalOpen}
-            onClose={handleDelete}
+                product={title}
+                isModalOpen={isModalOpen}
+                setIsModalOpen={setIsModalOpen}
+                onClose={handleDelete}
             ></ConfirmationModal>
         </div>
     )

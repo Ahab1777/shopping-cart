@@ -25,7 +25,7 @@
     }
 
     .cartButton:hover, .homeButton:hover, .shopButton:hover {
-        background-color: var(--secondary-hover);
+        background-color: var(--bg-primary);
         scale: 0.9;
 }
 
