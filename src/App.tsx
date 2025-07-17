@@ -28,10 +28,10 @@ function App() {
         <CartProvider>
             <div className='main'> 
                 <Navbar />
-                <div className="content">
+                <div className="content" aria-label="Main content">
                     <Outlet/>
                 </div>
-                <footer>
+                <footer aria-label="Site footer">
                     <p>by: Leonardo de Pinho - © 2025 The Odin Project. Fake shop website for educational purposes.  
                     <a href='https://github.com/Ahab1777/shopping-cart'>GitHub</a>
                     </p>
