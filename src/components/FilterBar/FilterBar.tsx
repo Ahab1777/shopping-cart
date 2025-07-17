@@ -16,12 +16,17 @@ const FilterBar = ({setFilter}: FilterBarProps) => {
     return (
         <div className={styles.filterBar}>
             <label 
-            className={styles.label}
-            htmlFor="filter-select">Sort by:</label>
+                className={styles.label}
+                htmlFor="filter-select"
+            >
+                Sort by:
+            </label>
             <select
-            className={styles.select} 
-            id="filter-select"
-            onChange={handleFilterChange}>
+                className={styles.select}
+                id="filter-select"
+                aria-label="Sort products"
+                onChange={handleFilterChange}
+            >
                 <option value="phl">Price - High to Low</option>
                 <option value="plh">Price - Low to High</option>
                 <option value="rhl">Rating - High to Low</option>
