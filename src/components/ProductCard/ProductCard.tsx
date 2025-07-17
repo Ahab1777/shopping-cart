@@ -48,24 +48,25 @@ const ProductCard = ({ product }: ProductProps) => {
     const portalTarget = document.getElementById('portal-root')
 
     return (
-        <div className={styles.productCard} data-id={id}>
-            <h4 className={styles.title}>{title}</h4>
-            <img src={image} alt="Product image" className={styles.cardImg} />
+        <div className={styles.productCard} data-id={id} aria-label={`Product card for ${title}`}>
+            <h4 className={styles.title} aria-label={`Product title: ${title}`}>{title}</h4>
+            <img src={image} alt={`Image of ${title}`} className={styles.cardImg} aria-label={`Product image for ${title}`} />
             <div className={styles.infoContainer}>
-                <div className={styles.price}>
+                <div className={styles.price} aria-label={`Price: US$ ${price}`}>
                     US$ 
                     <span> {price}</span>
                 </div>
-                <div className={styles.rating}>
+                <div className={styles.rating} aria-label={`Rating: ${rating.rate} stars`}>
                     <FontAwesomeIcon 
-                    icon={faStar}>
+                    icon={faStar}
+                    aria-label="Star rating">
                     </FontAwesomeIcon>
                     <span>{rating.rate}</span>
                 </div>
-                <div className={styles.numberInput}>
+                <div className={styles.numberInput} aria-label="Quantity selector">
                     <button 
                         className={styles.decrementBtn}
-                        aria-label="Decrease value" 
+                        aria-label="Decrease quantity" 
                         data-set="decrement"
                         onClick={handleButtonClick}
                     >−</button>
@@ -77,10 +78,11 @@ const ProductCard = ({ product }: ProductProps) => {
                         max="100" 
                         step="1"
                         className={styles.input}
+                        aria-label="Quantity input"
                     />
                     <button 
                         className={styles.incrementBtn}
-                        aria-label="Increase value" 
+                        aria-label="Increase quantity" 
                         data-set="increment"
                         onClick={handleButtonClick}
                     >+</button>
