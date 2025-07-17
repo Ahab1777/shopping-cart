@@ -104,7 +104,7 @@ const Shop = () => {
     }
 
 
-    return(
+    return (
         <div className={styles.shopContainer}>
             <div className={styles.searchFilterContainer}>
                 <div className={styles.searchBar}>
@@ -114,11 +114,15 @@ const Shop = () => {
                     value={searchTerm}
                     className={styles.searchInput} 
                     onKeyDown={handleKeyPress}
-                    placeholder="Search here..."/>
+                    placeholder="Search here..."
+                    aria-label="Type search here"
+                    />
                     <FontAwesomeIcon 
                     icon={faMagnifyingGlass} 
                     className={styles.searchIcon}
                     onClick={handleSearch}
+                    aria-label="Search"
+                    tabIndex={0}
                     />
                 </div>
                 <FilterBar setFilter={setFilter}></FilterBar>
