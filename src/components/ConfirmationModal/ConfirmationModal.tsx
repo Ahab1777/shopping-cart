@@ -24,17 +24,20 @@ const ConfirmationModal = ({product, isModalOpen, setIsModalOpen, onClose}: Conf
         setIsModalOpen(false);
     }
 
-    return(
+    return (
         <>
         {isModalOpen ? 
             createPortal(
                 <div
                 className={styles.backdrop} 
-                onClick={handleCancel}>
-                    <div className={styles.modal}>
+                onClick={handleCancel}
+                aria-label="Close confirmation modal"
+                >
+                    <div className={styles.modal} aria-modal="true" role="dialog" aria-label={`Remove ${product} from your cart`}>
                         <button
                         className={styles.cancelButton}
                         onClick={handleCancel}
+                        aria-label="Cancel and close modal"
                         >X</button>
                         <div
                         className={styles.message}
@@ -42,6 +45,7 @@ const ConfirmationModal = ({product, isModalOpen, setIsModalOpen, onClose}: Conf
                         <button
                         className={styles.confirmButton}
                         onClick={handleConfirmation}
+                        aria-label="Confirm removal"
                         >Confirm</button>
                     </div>
                 </div>,
@@ -49,7 +53,8 @@ const ConfirmationModal = ({product, isModalOpen, setIsModalOpen, onClose}: Conf
             )
 
          : null}
-        </>)
+        </>
+    )
 }
 
 export default ConfirmationModal
