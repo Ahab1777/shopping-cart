@@ -35,12 +35,15 @@ const Toast = ({message, show, onClose, duration = 1500}: ToastProps) => {
 
     return(
         <div 
-        className={`
-            ${styles.toast} 
-            ${visible ? styles.show : styles.hide}
+            className={`
+                ${styles.toast} 
+                ${visible ? styles.show : styles.hide}
             `}
-        onClick={onClose}
-        >{message}</div>
+            onClick={onClose}
+            aria-label="Notification"
+        >
+            {message}
+        </div>
     )
 }
 
