@@ -11,7 +11,7 @@ interface CartItemProps {
 }
 
 const CheckoutProduct = ({ cartItem }: CartItemProps) => {
-    const { addToCart, removeFromCart, clearCart, cartTotal, cartItemCount} = useCart();
+    const {removeFromCart} = useCart();
     const {id, title, price, image, rating, quantity} = cartItem;
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     

@@ -6,7 +6,7 @@ import { useState } from "react";
 import Toast from "../../components/Toast/Toast";
 
 const Cart = () => {
-    const {cart, removeFromCart, clearCart, cartTotal, cartItemCount} = useCart();
+    const {cart, removeFromCart, cartTotal, cartItemCount} = useCart();
     const [isToastOpen, setIsToastOpen] = useState<boolean>(false)
 
     const cartIsEmpty = cart.length <= 0;

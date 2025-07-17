@@ -14,6 +14,7 @@ const Shop = () => {
     const [error, setError] = useState<string | null>(null)
     const [hasSearched, setHasSearched] = useState<boolean>(false)
     const [filter, setFilter] = useState<string>('phl')
+    
     // Router navigation
     const location = useLocation();
     const params = new URLSearchParams(location.search);
@@ -62,7 +63,7 @@ const Shop = () => {
     }
 
     const handleSearch = async () => {
-        console.log('clicked')
+        console.log('Search clicked')
         if (!searchTerm.trim()) {
             setError('Please, enter valid search term')
             return;
