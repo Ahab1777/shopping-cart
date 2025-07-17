@@ -1,12 +1,17 @@
 import { useCart } from "../../hooks/useCart"
 import CheckoutProduct from "../../components/CheckoutProduct/CheckoutProduct";
 import styles from './Cart.module.css'
+import { createPortal } from "react-dom";
+import { useState } from "react";
+import Toast from "../../components/Toast/Toast";
 
 const Cart = () => {
     const {cart, removeFromCart, clearCart, cartTotal, cartItemCount} = useCart();
+    const [isToastOpen, setIsToastOpen] = useState<boolean>(false)
 
     const cartIsEmpty = cart.length <= 0;
 
+    const portalTarget = document.getElementById('portal-root')
 
     return (
         <div className={styles.container}>
@@ -57,7 +62,18 @@ const Cart = () => {
                         </span>
                     </div>
                 </div>
-                <button>Proceed to checkout</button>
+                <button
+                    onClick={() => setIsToastOpen(true)}
+                >Proceed to checkout</button>
+                {portalTarget && createPortal(
+                    <Toast
+                    message={'Just for display, sorry!'}
+                    show={isToastOpen}
+                    duration={3000}
+                    onClose={() => setIsToastOpen(false)}
+                    ></Toast>,
+                    portalTarget
+                )}                
             </div>
         </div>
     )

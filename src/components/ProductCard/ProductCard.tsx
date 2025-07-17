@@ -94,7 +94,7 @@ const ProductCard = ({ product }: ProductProps) => {
                     </button>
                     {portalTarget && createPortal(
                         <Toast
-                        message={'Item added!'}
+                        message={'Item(s) added!'}
                         show={isToastOpen}
                         duration={2000}
                         onClose={() => setIsToastOpen(false)}
