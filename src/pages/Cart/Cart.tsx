@@ -67,6 +67,7 @@ const Cart = () => {
                     </div>
                 </div>
                 <button
+                    className={styles.checkoutBtn}
                     onClick={() => setIsToastOpen(true)}
                     aria-label="Proceed to checkout"
                 >Proceed to checkout</button>
