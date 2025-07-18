@@ -6,7 +6,7 @@ import { useState } from "react";
 import Toast from "../../components/Toast/Toast";
 
 const Cart = () => {
-    const {cart, removeFromCart, cartTotal, cartItemCount} = useCart();
+    const {cart, cartTotal, cartItemCount} = useCart();
     const [isToastOpen, setIsToastOpen] = useState<boolean>(false)
 
     const cartIsEmpty = cart.length <= 0;
@@ -73,7 +73,7 @@ const Cart = () => {
                 {portalTarget && createPortal(
                     <Toast
                     message={'Just for display, sorry!'}
-                    show={isToastOpen}
+                    isToastOpen={isToastOpen}
                     duration={3000}
                     onClose={() => setIsToastOpen(false)}
                     ></Toast>,

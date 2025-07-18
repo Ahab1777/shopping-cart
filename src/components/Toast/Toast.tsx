@@ -3,41 +3,38 @@ import styles from './Toast.module.css'
 
 interface ToastProps {
     message: string;
-    show: boolean;
+    isToastOpen: boolean;
     onClose: () => void;
     duration?: number;
 }
 
-const Toast = ({message, show, onClose, duration = 1500}: ToastProps) => {
-    const [visible, setVisible] = useState<boolean>(show)
+const HIDE_ANIMATION_DURATION = 300;//ms
+
+const Toast = ({message, isToastOpen, onClose, duration = 1500}: ToastProps) => {
+    const [shouldRender, setShouldRender] = useState<boolean>(isToastOpen)
     //Ensure duration provides time for animation to happen
     const minDuration = 1000;
     const effectiveDuration = Math.max(duration, minDuration)
 
+
     useEffect(() => {
-        if(show) {
-            setVisible(true);
-            const timer = setTimeout(() => {
-                setVisible(false);
-            }, effectiveDuration + 100);
+        if (isToastOpen) {
+            setShouldRender(true)
+            const timer = setTimeout(onClose, effectiveDuration);
+            return () => clearTimeout(timer);
+        } else {
+            const timer = setTimeout(() => setShouldRender(false), HIDE_ANIMATION_DURATION);
             return () => clearTimeout(timer);
         }
-    }, [show, effectiveDuration])
+    },[isToastOpen, effectiveDuration, onClose]);
 
-    useEffect(() => {
-        if (!visible && show) {
-            const timer = setTimeout(onClose, 1900);//match hideToast duration
-            return () => clearTimeout(timer)
-        }
-    }, [visible, show, onClose])
-
-    if (!show && !visible) return null;
+    if (!shouldRender) return null;
 
     return(
         <div 
             className={`
                 ${styles.toast} 
-                ${visible ? styles.show : styles.hide}
+                ${isToastOpen ? styles.show : styles.hide}
             `}
             onClick={onClose}
             aria-label="Notification"

@@ -12,7 +12,7 @@ interface CartItemProps {
 
 const CheckoutProduct = ({ cartItem }: CartItemProps) => {
     const {removeFromCart} = useCart();
-    const {id, title, price, image, rating, quantity} = cartItem;
+    const {id, title, price, image, quantity} = cartItem;
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     
     const handleDelete = () => {
